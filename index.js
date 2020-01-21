@@ -49,8 +49,8 @@ chrome.storage.sync.get(domain, function(data){
         overrideServiceWorker += 'if(realPath.charAt(0)!=="/"){';
           overrideServiceWorker += 'realPath = window.location.pathname.replace(/\\/\\//g, "/").replace(/\\.js\\?.*/, ".js") + realPath;';
         overrideServiceWorker += '}';
-        overrideServiceWorker += 'if(__bsw__storedPrefs__ && typeof __bsw__storedPrefs__[realPath]!=="undefined"){';
-          overrideServiceWorker += 'if(__bsw__storedPrefs__[realPath]){'; // already ALLOWED
+        overrideServiceWorker += 'if(true || __bsw__storedPrefs__ && typeof __bsw__storedPrefs__[realPath]!=="undefined"){';
+          overrideServiceWorker += 'if(false && __bsw__storedPrefs__[realPath]){'; // already ALLOWED
             overrideServiceWorker += 'var exec=function(){__bsw_override__(path, opts)};';
             overrideServiceWorker += 'return new Promise(function(res,rej){res(exec)});';            
           overrideServiceWorker += '}else{'; // already BLOCKED
